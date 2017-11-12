@@ -5,8 +5,7 @@
 
 
 #You'll need to provide an external word list. I got mine from
-#https://github.com/dwyl/english-words/blob/master/words_dictionary.json,
-#but it's missing firetruck..so i'll have to get a new one.
+#https://github.com/dwyl/english-words/blob/master/words_dictionary.json
 #this listing is saved as json, saved to a variable english_words, in the
 #file words_dictionary.py
 
