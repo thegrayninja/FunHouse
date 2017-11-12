@@ -6,7 +6,7 @@
 
 #You'll need to provide an external word list. I got mine from
 #https://github.com/dwyl/english-words/blob/master/words_dictionary.json,
-#but it's missing firetruck..but I'm still grateful! :D
+#but it's missing firetruck..so i'll have to get a new one.
 #this listing is saved as json, saved to a variable english_words, in the
 #file words_dictionary.py
 
@@ -22,9 +22,9 @@ from words_dictionary import english_words
 def HelpMenu():
     print("\n\n\tEnglish Treasure Map - HELP MENU\n")
     print("Example:")
-    print("\t.\\scrabble_help.py people")
-    print("\t.\\scrabble_help.py -l people")
-    print("\t.\\scrabble_help.py <option> {search_term}\tnote: option not required\n\n")
+    print("\t.\\EnglishTreasureMap.py people")
+    print("\t.\\EnglishTreasureMap.py -l people")
+    print("\t.\\EnglishTreasureMap.py <option> {search_term}\tnote: option not required\n\n")
     print("Options:\n")
     print("     -a     Return Words that match all letters provided.")
     print("     -e     Matches words that end with this letter. Only one letter allowed.")
