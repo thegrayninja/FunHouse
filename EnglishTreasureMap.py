@@ -31,6 +31,7 @@ def HelpMenu():
     print("     -i     Ignore this letter. Do not return words that contain this letter.\n              Must be used with another switch/option")
     print("     -l     Match words equal size or larger. Letter count may not be exact.")
     print("     -s     Match words smaller or equal size. Letter count may not be exact.")
+    print("     -x     Return Words that can be used with the provided letters.")
     print("\n\n")
     sys.exit(0)
 
@@ -47,6 +48,47 @@ def SearchDictionaryAll(UserLetters):
         else:
             continue
     return (WordList)
+
+
+def SearchDictionaryExact(xuser):
+    WordList = []
+    x = {}
+
+    for i in xuser:
+        if i not in x:
+            x[i] = 1
+        else:
+            x[i] += 1
+
+    for DictionaryWord in english_words:
+        LettersExist = []
+        if len(xuser) >= len(DictionaryWord):
+            for Letter in DictionaryWord:
+                if Letter in xuser:
+                    LettersExist.append(Letter)
+                else:
+                    LettersExist.append(99)
+
+            if 99 not in LettersExist:
+                y = {}
+                for Letter in DictionaryWord:
+                    if Letter not in y:
+                        y[Letter] = 1
+                    else:
+                        y[Letter] += 1
+
+                ValidWord = "Yes"
+                for Letter in DictionaryWord:
+                    if y.get(Letter) > x.get(Letter):
+                        ValidWord = "No"
+
+                if ValidWord == "Yes":
+                        WordList.append(DictionaryWord)
+
+    return (WordList)
+
+
+
 
 
 def SearchDictionarySmaller(UserLetters):
@@ -125,6 +167,8 @@ def main():
 
         if '-a' in sys.argv[1]:
             WordList = SearchDictionaryAll(sys.argv[2])
+        elif '-x' in sys.argv[1]:
+            WordList = SearchDictionaryExact(sys.argv[2])
         elif '-s' in sys.argv[1]:
             WordList = SearchDictionarySmaller(sys.argv[2])
         elif '-l' in sys.argv[1]:
