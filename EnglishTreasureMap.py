@@ -10,19 +10,16 @@
 #file words_dictionary.py
 
 
-#version 1.0
+#version 1.0 2017/11/13
 
 import sys
 from words_dictionary import english_words
 
 ##the following two callouts are for the definition portion.
 ##remove if you cannot install BeautifulSoup
-from urllib.request import urlopen #as uReq
-from bs4 import BeautifulSoup #as soup
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
 
-
-
-#TODO Cleanup code!
 
 
 
