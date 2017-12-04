@@ -1,0 +1,52 @@
+##work in progress - simply a home made tracking tool. code is raw, but it's all good. 
+
+import time
+# basic, but useful in a pinch
+
+
+def GetCurrentTimeFormat():
+    return time.strftime('%X %x %Z', time.localtime(1512411570337))
+
+current_time = lambda: int(round(time.time() * 1000))
+
+print("%s GMT" % current_time())
+
+
+x =time.time()
+#print(GetCurrentTimeFormat())
+print (time.strftime("%Z - %Y/%m/%d, %H:%M:%S", time.localtime(x)))
+# returns HH:MM:SS MM:DD:YY TimeZone
+
+SampleText = 0
+
+
+Status = 1
+Count = 1
+#MacTable = {"Travis Phone":{"Status":"Online","Time":time.time(),"Count":Count}}
+
+DeviceTable = {
+    "devices": [{
+        "title":"travis phone",
+        "status": "offline",
+        "time":time.time(),
+        "humantime":time.strftime("%Z - %Y/%m%d, %H:%M:%S", time.localtime(time.time()))
+                },
+                {
+        "title":"harmeet phone",
+        "status": "online",
+        "time":time.time(),
+        "humantime":time.strftime("%Z - %Y/%m%d, %H:%M:%S", time.localtime(time.time()))
+                }]
+}
+
+
+
+if 1 == 1:
+    StatusCurrent = "online"
+    if StatusCurrent != DeviceTable["devices"][0]["status"]:
+        DeviceTable["devices"][0]["status"] = StatusCurrent
+        DeviceTitle = DeviceTable["devices"][0]["title"]
+        DeviceStatus = DeviceTable["devices"][0]["status"]
+        DeviceHumanTime = DeviceTable["devices"][0]["humantime"]
+        print("%s went %s at %s" % (DeviceTitle,DeviceStatus, DeviceHumanTime))
+
