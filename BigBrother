@@ -1,52 +1,60 @@
-##work in progress - simply a home made tracking tool. code is raw, but it's all good. 
+##work in progress - simply a home made tracking tool. code is raw, but it's all good.
 
 import time
-# basic, but useful in a pinch
+#from bb_devicesknown import DeviceTable
 
-
-def GetCurrentTimeFormat():
-    return time.strftime('%X %x %Z', time.localtime(1512411570337))
-
-current_time = lambda: int(round(time.time() * 1000))
-
-print("%s GMT" % current_time())
-
-
-x =time.time()
-#print(GetCurrentTimeFormat())
-print (time.strftime("%Z - %Y/%m/%d, %H:%M:%S", time.localtime(x)))
-# returns HH:MM:SS MM:DD:YY TimeZone
-
-SampleText = 0
-
-
-Status = 1
-Count = 1
-#MacTable = {"Travis Phone":{"Status":"Online","Time":time.time(),"Count":Count}}
 
 DeviceTable = {
     "devices": [{
         "title":"travis phone",
-        "status": "offline",
+        "uid":"1233",
+        "status": "online",
         "time":time.time(),
-        "humantime":time.strftime("%Z - %Y/%m%d, %H:%M:%S", time.localtime(time.time()))
+        "notify":"yes",
+        "humantime":0
                 },
                 {
         "title":"harmeet phone",
-        "status": "online",
+        "uid":"1235",
+        "status": "offline",
         "time":time.time(),
-        "humantime":time.strftime("%Z - %Y/%m%d, %H:%M:%S", time.localtime(time.time()))
+        "notify":"yes",
+        "humantime":0
                 }]
 }
 
 
 
-if 1 == 1:
-    StatusCurrent = "online"
-    if StatusCurrent != DeviceTable["devices"][0]["status"]:
-        DeviceTable["devices"][0]["status"] = StatusCurrent
-        DeviceTitle = DeviceTable["devices"][0]["title"]
-        DeviceStatus = DeviceTable["devices"][0]["status"]
-        DeviceHumanTime = DeviceTable["devices"][0]["humantime"]
-        print("%s went %s at %s" % (DeviceTitle,DeviceStatus, DeviceHumanTime))
+NewDevice = "1235"
+
+for number in "abc":
+    HumanTime = time.strftime("%Z - %Y/%m%d, %H:%M:%S", time.localtime(time.time()))
+
+    DeviceCounter = 0
+    for i in DeviceTable["devices"]:
+        if NewDevice == DeviceTable["devices"][DeviceCounter]["uid"]:
+            if DeviceTable["devices"][DeviceCounter]["status"] == "offline":
+                DeviceTable["devices"][DeviceCounter]["status"] = "online"
+                DeviceTable["devices"][DeviceCounter]["humantime"] = HumanTime
+                print("%s is now online" % DeviceTable["devices"][DeviceCounter]["title"])
+            #print("Yay, it's a match")
+        #DEBUGGING#else:
+            #DEBUGGING#print(DeviceTable["devices"][DeviceCounter]["title"])
+            #DEBUGGING#print("Not a match. Please continue.")
+
+        DeviceCounter += 1
+
+
+
+    DeviceOfflineCounter = 0
+    for i in DeviceTable["devices"]:
+        if DeviceTable["devices"][DeviceOfflineCounter]["humantime"] != HumanTime:
+            if DeviceTable["devices"][DeviceOfflineCounter]["status"] == "online":
+                DeviceTable["devices"][DeviceOfflineCounter]["status"] = "offline"
+                DeviceTable["devices"][DeviceOfflineCounter]["humantime"] = HumanTime
+                print("%s is offline :(" % DeviceTable["devices"][DeviceOfflineCounter]["title"])
+        DeviceCounter += 1
+    print("sleeping for 10 seconds")
+    time.sleep(10)
+
 
