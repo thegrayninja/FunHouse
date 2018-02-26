@@ -3,6 +3,7 @@
 import time
 #from bb_devicesknown import DeviceTable
 
+#maybe use arp -an (non admin) or arp-scan (sudo)
 
 DeviceTable = {
     "devices": [{
